@@ -15,8 +15,8 @@ proc-macro = true
 [dependencies]
 syn = { version = "1.0", features = ["full", "extra-traits", "visit", "fold"] }
 proc-macro2 = "1.0"
-quote = "1.0.6"
-proc-macro-crate = "0.1.4"
+quote = "1"
+proc-macro-crate = "2.0.0"
 
 [dev-dependencies]
 assert_matches = "1.3"

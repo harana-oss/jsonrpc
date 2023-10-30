@@ -18,7 +18,7 @@ jsonrpc-core = { version = "18.0.0", path = "../core" }
 lazy_static = "1.1.0"
 log = "0.4"
 tokio = { version = "1", features = ["rt-multi-thread", "io-util", "time", "net"] }
-tokio-util = { version = "0.6", features = ["codec"] }
+tokio-util = { version = "0.7", features = ["codec"] }
 tokio-stream = { version = "0.1", features = ["net"] }
 
 unicase = "2.0"

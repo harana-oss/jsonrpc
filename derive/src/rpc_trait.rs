@@ -6,6 +6,7 @@ use crate::to_delegate::{generate_trait_item_method, MethodRegistration, RpcMeth
 use proc_macro2::{Span, TokenStream};
 use quote::{quote, ToTokens};
 use std::collections::HashMap;
+use proc_macro_crate::FoundCrate;
 use syn::{
 	fold::{self, Fold},
 	parse_quote,
@@ -230,7 +231,10 @@ fn has_named_params(methods: &[RpcMethod]) -> bool {
 
 pub fn crate_name(name: &str) -> Result<Ident> {
 	proc_macro_crate::crate_name(name)
-		.map(|name| Ident::new(&name, Span::call_site()))
+		.map(|cr| match cr {
+			FoundCrate::Itself => Ident::new(&name, Span::call_site()),
+			FoundCrate::Name(name) => Ident::new(&name, Span::call_site()),
+		})
 		.map_err(|e| Error::new(Span::call_site(), &e))
 }
 
